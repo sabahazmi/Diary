@@ -1,34 +1,11 @@
 <?php
 include 'config.php';
 session_start();
-if (isset($_SESSION['username'])) {
+if (!isset($_SESSION['username'])) {
 
-		header('location: write.php');
+		header('location: index.php');
 
 };
-?>
-<?php
-	if (isset($_POST['login'])) {
-		$username = trim($_POST['username']);
-		$password = trim($_POST['password']);
-		$error ='';
-		$sql = "SELECT * FROM users WHERE username = '$username'";
-
-    $result = mysqli_query($mysqli, $sql);
-
-		$row = mysqli_num_rows($result);
-			if($row == 1)
-			{
-				// session_start();
-				// $_SESSION['user_id'] = $user_id;
-				$_SESSION['username'] = $username;
-          header('location: write.php');
-			}else
-			{
-				header('location: index.php?error= Invalid Username or Password !');
-
-			}
-		}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -44,19 +21,10 @@ if (isset($_SESSION['username'])) {
   <script src="main.js"></script>
 </head>
 <body>
-	<div class="navbar navbar-dark fixed-top">
-	 <a class="navbar-brand text-monospace" href="#"><h3>Diary</h3></a>
-	 <ul>
-		 <li>Entries</li>
-	 	<li>Logout</li>
-	 </ul>
-	</div>
-
-	</div>
 <section class="wrapper">
-  <div class="content login">
+  <div class="content">
     <header>
-      <h1>Login</h1>
+      <h1>Write your diary</h1>
     </header>
     <section>
       <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" class="login-form">
@@ -65,11 +33,12 @@ if (isset($_SESSION['username'])) {
 				</div>
 				<div class="input-group">
           <!-- <label for="username">Username</label> -->
-          <input type="text" placeholder="Username" name="username" id="username" autocomplete="off">
+          <input type="text" placeholder="<?php date_default_timezone_set("Asia/Kolkata");
+                                          echo date("l jS F Y \| h:i:s A");?>" name="date" disabled>
         </div>
         <div class="input-group">
-          <!-- <label for="password">Password</label> -->
-          <input type="password" name="password" placeholder="Password" id="password">
+          <!-- <label for="password">Entry</label> -->
+          <textarea name="entry" rows="8" cols="90"></textarea>
         </div>
         <div class="input-group"><button type="submit" name="login">Login</button></div>
       </form>

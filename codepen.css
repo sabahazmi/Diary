@@ -6,6 +6,8 @@ body {
   height: 100vh;
 }
 .wrapper {
+  background-image: url('background.jpg');
+  color: #fff;
   background-color:#262936;
   height: 100%;
   width: 100%;
@@ -14,20 +16,20 @@ body {
   align-items: center;
 }
 .wrapper .content {
-  background-color: #292C3A;
+  background-color: rgba(0,0,0,0.6) !important;
   padding: 30px 15px;
   border-radius: 10px;
   width: 100%;
-  max-width: 500px;
-  min-width: 200px;
+  max-width: 800px;
+  min-width: 2  00px;
 }
 .wrapper .content button {
   padding: 15px;
   width: 150px;
   border: unset;
   background: #262936;
-  border-radius: 50px;
-  color: #333;
+  border-radius: 5px;
+  color: #fff;
   cursor: pointer;
 }
 .wrapper .content button:focus {
@@ -45,8 +47,26 @@ body {
   padding: 0 20px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
 }
+::-webkit-input-placeholder { /* Edge */
+  color: #fff;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #fff;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+::placeholder {
+  color: #fff;
+  font-weight: 600;
+  font-size: 13px;
+}
+
 .wrapper .content .login-form .input-group {
   display: flex;
   flex-direction: column;
@@ -54,12 +74,15 @@ body {
   width: 100%;
   max-width: 310px;
 }
-.wrapper .content .login-form .input-group input {
+.wrapper .content .login-form .input-group input, textarea {
+  width: auto;
   padding: 15px;
   font-size: 13px;
-  border: 1px solid #262936;
-  background-color: #262936;
-  border-radius: 50px;
+  color: #fff;
+  border: 0px solid #fff;
+  text-align: left;
+  background-color: rgba(0,0,0,0.6) !important;
+  border-radius: 5px;
   tranistion: background 0.5s;
   -webkit-tranistion: background 0.5s;
 }
@@ -74,28 +97,23 @@ body {
   margin-bottom: 3px;
   margin-left: 16px;
 }
+input[type="text"]{
+  color: white;
+}
 .wrapper .content .login-form .input-group button {
-  background-color: #262936;
+  background-color: #8b0023;
   border: unset;
   color: #fff;
-  align-self: center;
+  align-self: baseline;
   margin-top: 15px;
   transition: background 0.5s;
   -webkit-transition: background 0.5s;
 }
 .wrapper .content .login-form .input-group button:hover {
-  background-color: #fff;
-  color: #262936;
+  background-color: rgba(0,0,0,0.8) !important;
+  color: #fff;
 }
-.wrapper .content footer {
-  padding-top: 15px;
-  text-align: center;
-}
-.wrapper .content footer a {
-  color: #999;
-  text-decoration: none;
-  font-size: 11px;
-}
+
 @media screen and (max-width: 720px) {
   .wrapper .content {
     padding-right: 0;
